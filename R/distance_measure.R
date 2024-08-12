@@ -54,4 +54,3 @@ data("mtcars")
 lm_model <- lm(mpg ~ wt + hp, data = mtcars)
 result <- influence_measures(mtcars, lm_model, method = "cooks")
 plot(result)
-?lm
