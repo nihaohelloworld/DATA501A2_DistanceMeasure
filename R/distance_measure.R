@@ -49,3 +49,8 @@ influence_measures <- function(data, model, method = c("cooks", "dffits", "hadi"
 
   stop("Invalid method. Choose one of 'cooks', 'dffits', or 'hadi'.")
 }
+
+data("mtcars")
+lm_model <- lm(mpg ~ wt + hp, data = mtcars)
+result <- influence_measures(mtcars, lm_model, method = "cooks")
+plot(result)
