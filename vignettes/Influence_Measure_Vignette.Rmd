@@ -28,10 +28,6 @@ The calculate methods are from the book "Regression Analysis by Example (Hadi, A
 
 You can install the package using the following commands:
 
-```{r}
-# install.packages("devtools")
-devtools::install_github("nihaohelloworld/DATA501A2_DistanceMeasure")
-```
 
 # Usage
 
