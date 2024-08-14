@@ -13,5 +13,6 @@ Imports:
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
+    devtools,
     rmarkdown
 VignetteBuilder: knitr
