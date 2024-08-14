@@ -1,0 +1,53 @@
+---
+title: "Influence_Measure_Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Influence_Measure_Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+This vignette provides an overview of the `DATA501A2DM` package, which is used to calculate one of the three influence measure values and plot them.        
+
+* Cook's Distance (Cook, 1977)
+* DFFITS (Belsley, 1980)
+* Hadis Influence Measure (hadi, 1992)        
+
+The calculate methods are from the book "Regression Analysis by Example (Hadi, Ali S; 2012; 5th Edition,Chapter 4)"       
+
+# Installation
+
+You can install the package using the following commands:
+
+```{r setup}
+# install.packages("devtools")
+devtools::install_github("nihaohelloworld/DATA501A2_DistanceMeasure")
+```
+
+# Usage
+
+```{r}
+library(DATA501A2DM)
+
+# Fit a linear model
+lm_model <- lm(mpg ~ wt + hp, data = mtcars)
+
+# Plot Cook's Distance
+plot_influence_measure(mtcars, lm_model, method = "cooks")
+
+# Plot DFFITS
+plot_influence_measure(mtcars, lm_model, method = "dffits")
+
+# Plot Hadi's Influence Measure
+plot_influence_measure(mtcars, lm_model, method = "hadi")
+```
+
