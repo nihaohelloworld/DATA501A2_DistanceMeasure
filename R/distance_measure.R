@@ -8,7 +8,7 @@
 #' @param method A character string specifying the method of influence measure to calculate.
 #'        One of "cooks", "dffits", or "hadi".
 #' @return A scatter plot of the selected influence measure.
-#' @importFrom stats lm residuals
+#' @importFrom stats lm residuals coef fitted formula model.matrix predict
 #' @importFrom graphics plot
 #' @examples
 #' lm_model <- lm(mpg ~ wt + hp, data = mtcars)
