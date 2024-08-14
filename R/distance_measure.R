@@ -12,11 +12,11 @@
 #' @importFrom graphics plot
 #' @examples
 #' lm_model <- lm(mpg ~ wt + hp, data = mtcars)
-#' influence_measure_plot(mtcars, lm_model, method = "cooks")
-#' influence_measure_plot(mtcars, lm_model, method = "dffits")
-#' influence_measure_plot(mtcars, lm_model, method = "hadi")
+#' plot_influence_measure(mtcars, lm_model, method = "cooks")
+#' plot_influence_measure(mtcars, lm_model, method = "dffits")
+#' plot_influence_measure(mtcars, lm_model, method = "hadi")
 #' @export
-influence_measure_plot <- function(data, model, method = c("cooks", "dffits", "hadi")) {
+plot_influence_measure <- function(data, model, method = c("cooks", "dffits", "hadi")) {
   method <- match.arg(method)
 
   if (!inherits(model, "lm")) {
@@ -50,9 +50,9 @@ influence_measure_plot <- function(data, model, method = c("cooks", "dffits", "h
 
   influence_values <- switch(
     method,
-    "cooks" = cook_distance_custom(model),
-    "dffits" = dffits_custom(model),
-    "hadi" = hadi_influence_custom(model)
+    "cooks" = cook_distance(model),
+    "dffits" = dffits(model),
+    "hadi" = hadi_influence(model)
   )
 
   plot(
@@ -70,10 +70,10 @@ influence_measure_plot <- function(data, model, method = c("cooks", "dffits", "h
 
 #' Cook's Distance Calculation
 #'
-#' @inheritParams influence_measure_plot
+#' @inheritParams plot_influence_measure
 #' @return A vector of Cook's Distance values
 #' @export
-cook_distance_custom <- function(model) {
+cook_distance <- function(model) {
   y_hat <- fitted(model)
   n <- length(y_hat)
   p <- length(coef(model))
@@ -94,10 +94,10 @@ cook_distance_custom <- function(model) {
 
 #' DFFITS Calculation
 #'
-#' @inheritParams influence_measure_plot
+#' @inheritParams plot_influence_measure
 #' @return A vector of DFFITS values
 #' @export
-dffits_custom <- function(model) {
+dffits <- function(model) {
   y_hat <- fitted(model)
   n <- length(y_hat)
   p <- length(coef(model))
@@ -121,10 +121,10 @@ dffits_custom <- function(model) {
 
 #' Hadi's Influence Measure Calculation
 #'
-#' @inheritParams influence_measure_plot
+#' @inheritParams plot_influence_measure
 #' @return A vector of Hadi's Influence Measure values
 #' @export
-hadi_influence_custom <- function(model) {
+hadi_influence <- function(model) {
   n <- length(model$fitted.values)
   p <- length(coef(model))
   X <- model.matrix(model)
