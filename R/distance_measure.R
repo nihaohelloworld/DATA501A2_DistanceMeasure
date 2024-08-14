@@ -1,15 +1,15 @@
-#' Calculate Influence Measure and Plot
+#' Calculate Influence Measure and Plot the influence values
 #'
 #' This function calculates one of Cook's Distance, DFFITS, or Hadi's Influence Measure
-#' for a given linear model and then creates a scatter plot of the values.
+#' for a given linear model object and then creates a scatter plot of the influence values.
 #'
 #' @param data A data frame containing the data.
 #' @param model An `lm` object representing the linear model.
-#' @param method A character string specifying the influence measure to calculate.
+#' @param method A character string specifying the method of influence measure to calculate.
 #'        One of "cooks", "dffits", or "hadi".
 #' @return A scatter plot of the selected influence measure.
-#' @importFrom stats lm cooks.distance residuals
-#' @importFrom graphics plot abline
+#' @importFrom stats lm residuals
+#' @importFrom graphics plot
 #' @examples
 #' lm_model <- lm(mpg ~ wt + hp, data = mtcars)
 #' influence_measure_plot(mtcars, lm_model, method = "cooks")
