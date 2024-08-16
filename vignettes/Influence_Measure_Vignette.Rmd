@@ -1,13 +1,15 @@
 ---
-title: "Influence_Measure_Vignette"
+title: "Influence Measures in Linear Models"
+author: "Your Name"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Influence_Measure_Vignette}
+  %\VignetteIndexEntry{Influence Measures in Linear Models}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -36,14 +38,25 @@ if (!requireNamespace("DATA501A2DM", quietly = TRUE)) {
 ```
 
 
-# Usage
+# Example Usage
+
+We will use the built-in `mtcars` dataset to demonstrate how to apply the `plot_influence_measure` function.        
+
+## Fit a Linear Model       
+
+First, we need to fit a linear model using the `lm` function:       
+
+```{r}
+lm_model <- lm(mpg ~ wt + hp, data = mtcars)
+summary(lm_model)
+```
+
+## Plot Cook's Distance       
+
+Next, we will calculate Cook's Distance, DFFITS, Hadi's Influence Measure separately and plot it:       
 
 ```{r}
 library(DATA501A2DM)
-
-# Fit a linear model
-lm_model <- lm(mpg ~ wt + hp, data = mtcars)
-
 # Plot Cook's Distance
 plot_influence_measure(mtcars, lm_model, method = "cooks")
 
@@ -53,4 +66,35 @@ plot_influence_measure(mtcars, lm_model, method = "dffits")
 # Plot Hadi's Influence Measure
 plot_influence_measure(mtcars, lm_model, method = "hadi")
 ```
+
+# Conclusion        
+
+The `plot_influence_measure` function is a versatile tool for assessing the influence of individual data points in linear models. By calculating and visualising different influence measures, you can better understand the robustness of your model.        
+
+# references        
+
+* regression Analysis by Example (Hadi, Ali S; 2012; 5th Edition)       
+* Cooks Distance Measure (Cook, 1977)       
+* DFFITS (Welsch and Kuh, 1977; Belsley, 1980)        
+* Hadis Influence Measure (Hadi, 1992)        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
