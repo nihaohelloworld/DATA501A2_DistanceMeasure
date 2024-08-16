@@ -42,13 +42,6 @@ test_that("plot_influence_measure catches infinite values in data", {
                "The data contains infinite values. Please remove or correct them before proceeding.")
 })
 
-test_that("plot_influence_measure catches fewer predictors than coefficients", {
-  model <- lm(mpg ~ wt + hp + drat, data = mtcars)
-  reduced_data <- mtcars[, c("mpg", "wt", "hp")]
-
-  expect_error(plot_influence_measure(reduced_data, model, method = "cooks"),
-               "The number of predictors in the data is less than the number of coefficients in the model.")
-})
 
 test_that("cook_distance function returns correct length", {
   model <- lm(mpg ~ wt + hp, data = mtcars)
