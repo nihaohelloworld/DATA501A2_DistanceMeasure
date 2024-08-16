@@ -32,12 +32,12 @@ plot_influence_measure <- function(data, model, method = c("cooks", "dffits", "h
     stop("The data does not contain all the variables used in the model.")
   }
 
-  if (nrow(data) != nrow(model$model)) {
-    stop("The number of observations in the data does not match the number used in the model.")
-  }
-
   if (anyNA(data)) {
     stop("The data contains NA values. Please remove or impute them before proceeding.")
+  }
+
+  if (nrow(data) != nrow(model$model)) {
+    stop("The number of observations in the data does not match the number used in the model.")
   }
 
   if (any(is.infinite(as.matrix(data)))) {
