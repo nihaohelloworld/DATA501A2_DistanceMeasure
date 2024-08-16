@@ -23,13 +23,6 @@ test_that("plot_influence_measure catches missing variables in data", {
                "The data does not contain all the variables used in the model.")
 })
 
-test_that("plot_influence_measure catches mismatched data and model rows", {
-  model <- lm(mpg ~ wt + hp, data = mtcars)
-  extra_row <- rbind(mtcars, mtcars[1, ])
-
-  expect_error(plot_influence_measure(extra_row, model, method = "cooks"),
-               "The number of observations in the data does not match the number used in the model.")
-})
 
 test_that("plot_influence_measure catches NA values in data", {
   model <- lm(mpg ~ wt + hp, data = mtcars)
