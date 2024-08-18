@@ -73,7 +73,7 @@ The `plot_influence_measure` function is a versatile tool for assessing the infl
 
 # references        
 
-* regression Analysis by Example (Hadi, Ali S; 2012; 5th Edition)       
+* Regression Analysis by Example (Hadi, Ali S; 2012; 5th Edition)       
 * Cooks Distance Measure (Cook, 1977)       
 * DFFITS (Welsch and Kuh, 1977; Belsley, 1980)        
 * Hadis Influence Measure (Hadi, 1992)        
